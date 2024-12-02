@@ -86,7 +86,6 @@ function Row({ children }) {
 
   return (
     <StyledRow role="row" columns={columns}>
-      {" "}
       {children}
     </StyledRow>
   );

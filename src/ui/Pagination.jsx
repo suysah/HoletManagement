@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { PAGE_SIZE } from "../utils/Constants";
 
 const StyledPagination = styled.div`
   width: 100%;
@@ -55,3 +56,57 @@ const PaginationButton = styled.button`
     color: var(--color-brand-50);
   }
 `;
+
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+import { useSearchParams } from "react-router-dom";
+
+const Pagination = ({ count }) => {
+  const [searchParams, setSearcParams] = useSearchParams();
+  const currrentPage = !searchParams.get("page")
+    ? 1
+    : Number(searchParams.get("page"));
+
+  const pageCount = Math.ceil(count / PAGE_SIZE);
+
+  function nextPage() {
+    const next = currrentPage === pageCount ? currrentPage : currrentPage + 1;
+
+    searchParams.set("page", next);
+    setSearcParams(searchParams);
+  }
+
+  function previousPage() {
+    const prev = currrentPage === 1 ? currrentPage : currrentPage - 1;
+
+    searchParams.set("page", prev);
+    setSearcParams(searchParams);
+  }
+
+  if (pageCount <= 1) return null;
+
+  return (
+    <StyledPagination>
+      <PaginationButton onClick={previousPage} disabled={currrentPage === 1}>
+        <HiChevronLeft />
+        <span>Previous</span>
+      </PaginationButton>
+      <P>
+        Showing <span> {(currrentPage - 1) * PAGE_SIZE + 1} </span> to{" "}
+        <span>
+          {" "}
+          {currrentPage === pageCount ? count : currrentPage * PAGE_SIZE}{" "}
+        </span>{" "}
+        of <span> {count} </span> results
+      </P>
+      <PaginationButton
+        onClick={nextPage}
+        disabled={currrentPage === pageCount}
+      >
+        <HiChevronRight />
+        <span>Next</span>
+      </PaginationButton>
+    </StyledPagination>
+  );
+};
+
+export default Pagination;

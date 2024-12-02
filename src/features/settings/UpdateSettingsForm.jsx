@@ -7,14 +7,14 @@ import { useSettings } from "./useSettings";
 
 function UpdateSettingsForm() {
   const { isLoading, settings } = useSettings();
+  const { updateSettings, isUpdating } = useEditSettings();
+
   const {
     minBookingLength,
     maxBookingLength,
     maxGuestsPerBooking,
     breakfastPrice,
   } = settings;
-
-  const { updateSettings, isUpdating } = useEditSettings();
 
   function handleUpdate(e, field) {
     const { value } = e.target;
