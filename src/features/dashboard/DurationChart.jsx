@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import {
-  AreaChart,
   Cell,
   Legend,
   Pie,
@@ -37,17 +37,17 @@ const startDataLight = [
   },
   {
     duration: "2 nights",
-    value: 3,
+    value: 0,
     color: "#f97316",
   },
   {
     duration: "3 nights",
-    value: 5,
+    value: 0,
     color: "#eab308",
   },
   {
     duration: "4-5 nights",
-    value: 7,
+    value: 0,
     color: "#84cc16",
   },
   {
@@ -57,7 +57,7 @@ const startDataLight = [
   },
   {
     duration: "8-14 nights",
-    value: 2,
+    value: 0,
     color: "#14b8a6",
   },
   {
@@ -67,7 +67,7 @@ const startDataLight = [
   },
   {
     duration: "21+ nights",
-    value: 1,
+    value: 0,
     color: "#a855f7",
   },
 ];
